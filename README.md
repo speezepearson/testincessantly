@@ -1,9 +1,9 @@
-A tool to run your tests way more often than you need.
+A tool to run your tests way more often than necessary.
 
-Basically:
+Basically, just run:
 
 ```bash
-    testincessantly . test-cmd ...
+    $ testincessantly . test-cmd ...
 ```
 
 and every time you create/modify/delete a file under the current directory, `test-cmd ...` will get executed.
