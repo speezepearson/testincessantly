@@ -1,12 +1,24 @@
 A tool to run your tests way more often than necessary.
 
-Basically, just run:
+Punch Line
+----------
+
+Run this:
 
 ```bash
     $ testincessantly dir test-cmd ...
 ```
 
 and every time you create/modify/delete a file under `dir`, `test-cmd ...` will get executed.
+
+
+Installation
+------------
+Just `pip install testincessantly`.
+
+
+Typical Usage
+-------------
 
 I typically invoke this as
 
