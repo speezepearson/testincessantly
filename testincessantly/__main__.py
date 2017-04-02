@@ -9,7 +9,7 @@ import testincessantly
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--verbose', action='store_true')
-parser.add_argument('--exclude-pattern', help='glob to ignore filepaths matching')
+parser.add_argument('-e', '--exclude-pattern', action='append', help='glob to ignore filepaths matching')
 parser.add_argument('--exclude-pattern-file', help='file containing globs to ignore filepaths matching, one per line')
 parser.add_argument('--kill-timeout', type=float, help='wait up to [timeout] seconds for test process to terminate before `kill -9`ing it')
 parser.add_argument('target_directory')
@@ -21,11 +21,9 @@ def main():
   if args.verbose:
     logging.basicConfig(level=logging.DEBUG)
 
-  bad_patterns = set()
+  bad_patterns = set(args.exclude_pattern)
   if args.exclude_pattern_file is not None:
     bad_patterns.update(testincessantly.exclusion.parse_pattern_file(open(args.exclude_pattern_file)))
-  if args.exclude_pattern:
-    bad_patterns.add(args.exclude_pattern)
 
   try:
     with testincessantly.RestartableProcess(args.test_command, stdin=subprocess.DEVNULL) as test_process:
