@@ -11,12 +11,12 @@ and every time you create/modify/delete a file under the current directory, `tes
 I typically invoke this as
 
 ```bash
-    testincessantly -e '.*' -e '__pycache__' . pytest
+    $ testincessantly -e '.*' -e '__pycache__' . pytest
 ```
 The `-e` options exclude dotfiles and anything named `__pycache__`.
 
 Okay, that was a lie. I actually typically invoke
 ```bash
-    testincessantly -e '.*' -e '__pycache__' . chime-success pytest
+    $ testincessantly -e '.*' -e '__pycache__' . chime-success pytest
 ```
-`chime-success` is a script on my `PATH` that makes a noise indicating whether the argument-command passed or failed.
+`chime-success` is [a script](https://gist.github.com/speezepearson/83c234c40d16c9f7fba73d8bca7a1a75) on my `PATH` that makes a noise indicating whether the argument-command passed or failed.
