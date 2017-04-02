@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import logging
 import subprocess
 import argparse
@@ -7,12 +8,17 @@ import argparse
 
 import testincessantly
 
+def ensure_is_dir(path):
+  if not os.path.isdir(path):
+    raise OSError('{!r} is not a directory'.format(path))
+  return path
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--verbose', action='store_true')
 parser.add_argument('-e', '--exclude-pattern', action='append', default=[], help='glob to ignore filepaths matching')
 parser.add_argument('--exclude-pattern-file', help='file containing globs to ignore filepaths matching, one per line')
 parser.add_argument('--kill-timeout', type=float, help='wait up to [timeout] seconds for test process to terminate before `kill -9`ing it')
-parser.add_argument('target_directory')
+parser.add_argument('target_directory', type=ensure_is_dir)
 parser.add_argument('test_command', nargs='+')
 
 def main():
