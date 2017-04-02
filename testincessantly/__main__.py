@@ -9,7 +9,7 @@ import testincessantly
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--verbose', action='store_true')
-parser.add_argument('-e', '--exclude-pattern', action='append', help='glob to ignore filepaths matching')
+parser.add_argument('-e', '--exclude-pattern', action='append', default=[], help='glob to ignore filepaths matching')
 parser.add_argument('--exclude-pattern-file', help='file containing globs to ignore filepaths matching, one per line')
 parser.add_argument('--kill-timeout', type=float, help='wait up to [timeout] seconds for test process to terminate before `kill -9`ing it')
 parser.add_argument('target_directory')
