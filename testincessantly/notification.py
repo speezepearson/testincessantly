@@ -2,8 +2,9 @@ import os.path
 import fnmatch
 import logging
 import inotify.adapters
+from typing import Generator
 
-def iter_modified_file_paths(target_directory):
+def iter_modified_file_paths(target_directory: str) -> Generator[str]:
   i = inotify.adapters.InotifyTree(target_directory.encode())
 
   def _helper():
